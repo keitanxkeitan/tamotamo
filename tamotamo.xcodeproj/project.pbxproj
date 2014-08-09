@@ -202,6 +202,9 @@
 		35C9C5C5199634B70041E0B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C9C5C4199634B70041E0B1 /* AppDelegate.m */; };
 		35C9C5C8199634B70041E0B1 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C9C5C7199634B70041E0B1 /* HelloWorldScene.m */; };
 		35C9C5CB199634B70041E0B1 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C9C5CA199634B70041E0B1 /* IntroScene.m */; };
+		35C9C5DC199638FC0041E0B1 /* CameraScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C9C5DB199638FC0041E0B1 /* CameraScene.m */; };
+		35C9C5DE1996661B0041E0B1 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C9C5DD1996661B0041E0B1 /* CoreImage.framework */; };
+		35C9C5E1199678A10041E0B1 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C9C5E0199678A10041E0B1 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -613,6 +616,11 @@
 		35C9C5C7199634B70041E0B1 /* HelloWorldScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HelloWorldScene.m; path = Classes/HelloWorldScene.m; sourceTree = "<group>"; };
 		35C9C5C9199634B70041E0B1 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		35C9C5CA199634B70041E0B1 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
+		35C9C5DA199638FC0041E0B1 /* CameraScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraScene.h; sourceTree = "<group>"; };
+		35C9C5DB199638FC0041E0B1 /* CameraScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraScene.m; sourceTree = "<group>"; };
+		35C9C5DD1996661B0041E0B1 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		35C9C5DF199678A10041E0B1 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		35C9C5E0199678A10041E0B1 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -620,6 +628,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C9C5DE1996661B0041E0B1 /* CoreImage.framework in Frameworks */,
 				35C9C34E199634AF0041E0B1 /* OpenAL.framework in Frameworks */,
 				35C9C354199634AF0041E0B1 /* UIKit.framework in Frameworks */,
 				35C9C34A199634AF0041E0B1 /* QuartzCore.framework in Frameworks */,
@@ -658,6 +667,7 @@
 		35C9C348199634AF0041E0B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35C9C5DD1996661B0041E0B1 /* CoreImage.framework */,
 				35C9C349199634AF0041E0B1 /* QuartzCore.framework */,
 				35C9C34B199634AF0041E0B1 /* OpenGLES.framework */,
 				35C9C34D199634AF0041E0B1 /* OpenAL.framework */,
@@ -1423,6 +1433,10 @@
 		35C9C5C2199634B70041E0B1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				35C9C5DA199638FC0041E0B1 /* CameraScene.h */,
+				35C9C5DB199638FC0041E0B1 /* CameraScene.m */,
+				35C9C5DF199678A10041E0B1 /* GameScene.h */,
+				35C9C5E0199678A10041E0B1 /* GameScene.m */,
 				35C9C5C3199634B70041E0B1 /* AppDelegate.h */,
 				35C9C5C4199634B70041E0B1 /* AppDelegate.m */,
 				35C9C5C6199634B70041E0B1 /* HelloWorldScene.h */,
@@ -1558,8 +1572,10 @@
 				35C9C5C8199634B70041E0B1 /* HelloWorldScene.m in Sources */,
 				35C9C3DE199634B10041E0B1 /* CCAnimationCache.m in Sources */,
 				35C9C498199634B40041E0B1 /* base64.c in Sources */,
+				35C9C5DC199638FC0041E0B1 /* CameraScene.m in Sources */,
 				35C9C421199634B30041E0B1 /* CCParticleSystemBase.m in Sources */,
 				35C9C486199634B40041E0B1 /* UITouch+CC.m in Sources */,
+				35C9C5E1199678A10041E0B1 /* GameScene.m in Sources */,
 				35C9C520199634B50041E0B1 /* CCButton.m in Sources */,
 				35C9C412199634B20041E0B1 /* CCParallaxNode.m in Sources */,
 				35C9C4A5199634B40041E0B1 /* ccUtils.c in Sources */,
