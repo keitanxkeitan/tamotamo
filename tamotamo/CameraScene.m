@@ -8,6 +8,7 @@
 
 #import "CameraScene.h"
 #import "GameScene.h"
+#import "IntroScene.h"
 
 @implementation CameraScene
 
@@ -79,13 +80,13 @@
   imagePickerCtrl.allowsEditing = NO;
   
   // モーダルビューとして表示する
-  [[CCDirector sharedDirector] presentModalViewController:imagePickerCtrl animated:YES];
+  [[CCDirector sharedDirector] presentModalViewController:imagePickerCtrl animated:NO];
 }
 //------------------------------------------------------------------------------
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
   // モーダルビューを閉じる
-  [[CCDirector sharedDirector] dismissModalViewControllerAnimated:NO];
+  [picker dismissModalViewControllerAnimated:NO];
   
   // 顔画像をトリミングする
   NSArray* faceImageList = [self trimFaceImage_:info];
@@ -95,16 +96,33 @@
     // ゲームシーンへ遷移    
     GameScene* scene = [GameScene sceneWithFaceImageList:faceImageList];
     [[CCDirector sharedDirector] replaceScene:scene
-                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+                               withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
   }
   else
   {
-    // 撮り直し
-    [self showCameraView_];
+    // アラート表示
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"タモタモ" message:@"顔検出できませんでした。もう一度撮影してください。" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alert show];
+    
+    // シーン再入場
+    CameraScene* scene = [CameraScene scene];
+    [[CCDirector sharedDirector] replaceScene:scene
+                               withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
   }
 }
 //------------------------------------------------------------------------------
--(NSArray *)trimFaceImage_:(NSDictionary *)info
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+  // モーダルビューを閉じる
+  [picker dismissModalViewControllerAnimated:NO];
+  
+  // タイトルシーンへ遷移
+  IntroScene* scene = [IntroScene scene];
+  [[CCDirector sharedDirector] replaceScene:scene
+                             withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
+}
+//------------------------------------------------------------------------------
+- (NSArray *)trimFaceImage_:(NSDictionary *)info
 {  
   // 検出器を生成
   CIDetector* detector = nil;

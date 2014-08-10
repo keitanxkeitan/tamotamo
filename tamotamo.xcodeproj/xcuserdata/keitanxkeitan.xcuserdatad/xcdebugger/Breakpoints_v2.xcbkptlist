@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tamotamo/GameScene.m"
-            timestampString = "429353028.896836"
+            timestampString = "429357685.623394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-initWithFaceImageList:"
             landmarkType = "5">
          </BreakpointContent>

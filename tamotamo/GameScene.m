@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Tamo.h"
+#import "IntroScene.h"
 
 
 @implementation GameScene
@@ -99,6 +100,13 @@
   // タモの数
   tamoNum_ = 0;
   
+  // Helloworld scene button
+  CCButton *helloWorldButton = [CCButton buttonWithTitle:@"[ Back ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+  helloWorldButton.positionType = CCPositionTypeNormalized;
+  helloWorldButton.position = ccp(0.5f, 0.35f);
+  [helloWorldButton setTarget:self selector:@selector(onSpinningClicked:)];
+  [self addChild:helloWorldButton];
+  
   return self;
 }
 //------------------------------------------------------------------------------
@@ -174,6 +182,15 @@
   }
   
   return nil;
+}
+// -----------------------------------------------------------------------
+#pragma mark - Button Callbacks
+// -----------------------------------------------------------------------
+- (void)onSpinningClicked:(id)sender
+{
+  // start spinning scene with transition
+  [[CCDirector sharedDirector] replaceScene:[IntroScene scene]
+                             withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
 }
 //------------------------------------------------------------------------------
 @end
