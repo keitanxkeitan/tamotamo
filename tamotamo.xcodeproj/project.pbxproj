@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353C0EF71997623D00F1C7BC /* Tamo.m in Sources */ = {isa = PBXBuildFile; fileRef = 353C0EF61997623D00F1C7BC /* Tamo.m */; };
 		35C9C34A199634AF0041E0B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C9C349199634AF0041E0B1 /* QuartzCore.framework */; };
 		35C9C34C199634AF0041E0B1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C9C34B199634AF0041E0B1 /* OpenGLES.framework */; };
 		35C9C34E199634AF0041E0B1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C9C34D199634AF0041E0B1 /* OpenAL.framework */; };
@@ -218,6 +219,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		353C0EF51997623D00F1C7BC /* Tamo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tamo.h; sourceTree = "<group>"; };
+		353C0EF61997623D00F1C7BC /* Tamo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tamo.m; sourceTree = "<group>"; };
 		35C9C346199634AF0041E0B1 /* tamotamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tamotamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C9C349199634AF0041E0B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		35C9C34B199634AF0041E0B1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1437,6 +1440,8 @@
 				35C9C5DB199638FC0041E0B1 /* CameraScene.m */,
 				35C9C5DF199678A10041E0B1 /* GameScene.h */,
 				35C9C5E0199678A10041E0B1 /* GameScene.m */,
+				353C0EF51997623D00F1C7BC /* Tamo.h */,
+				353C0EF61997623D00F1C7BC /* Tamo.m */,
 				35C9C5C3199634B70041E0B1 /* AppDelegate.h */,
 				35C9C5C4199634B70041E0B1 /* AppDelegate.m */,
 				35C9C5C6199634B70041E0B1 /* HelloWorldScene.h */,
@@ -1661,6 +1666,7 @@
 				35C9C3C7199634B10041E0B1 /* CCActionEase.m in Sources */,
 				35C9C3A8199634B00041E0B1 /* CCEffectGlow.m in Sources */,
 				35C9C4F4199634B50041E0B1 /* ALSoundSourcePool.m in Sources */,
+				353C0EF71997623D00F1C7BC /* Tamo.m in Sources */,
 				35C9C53F199634B60041E0B1 /* CCBKeyframe.m in Sources */,
 				35C9C3F5199634B20041E0B1 /* CCLabelBMFont.m in Sources */,
 				35C9C4E4199634B50041E0B1 /* ALCaptureDevice.m in Sources */,
@@ -1875,6 +1881,7 @@
 				35C9C5D0199634B70041E0B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35C9C5D1199634B70041E0B1 /* Build configuration list for PBXNativeTarget "tamotamo" */ = {
 			isa = XCConfigurationList;
@@ -1883,6 +1890,7 @@
 				35C9C5D3199634B70041E0B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "Tamo.h"
 
 
 @implementation GameScene
@@ -76,20 +77,21 @@
   for (CIImage* faceImage in faceImageList)
   {
     // 小タモ
-    CCSprite* smallTamo = [self createTamoWithImage:faceImage size:CGSizeMake(50.f, 50.f)];
+    Tamo* smallTamo = [Tamo tamoWithImage:faceImage size:CGSizeMake(50.f, 50.f)];
+    NSAssert(smallTamo.texture != nil, @"nil!!");
     NSMutableArray* smallTamoList = [NSMutableArray array];
     for (int i = 0; i < 20; ++i)
     {
-      [smallTamoList addObject:[self createTamoWithSprite:smallTamo]];
+      [smallTamoList addObject:[Tamo tamoWithTamo:smallTamo]];
     }
     [smallTamoListList_ addObject:smallTamoList];
     
     // 大タモ
-    CCSprite* largeTamo = [self createTamoWithImage:faceImage size:CGSizeMake(100.f, 100.f)];
+    Tamo* largeTamo = [Tamo tamoWithImage:faceImage size:CGSizeMake(100.f, 100.f)];
     NSMutableArray* largeTamoList = [NSMutableArray array];
     for (int i = 0; i < 2; ++i)
     {
-      [largeTamoList addObject:[self createTamoWithSprite:largeTamo]];
+      [largeTamoList addObject:[Tamo tamoWithTamo:largeTamo]];
     }
     [largeTamoListList_ addObject:largeTamoList];
   }
@@ -139,7 +141,7 @@
     const int type = rand() % tamoTypeNum_;
     const BOOL isLarge = rand() % 10 == 0;
     
-    CCSprite* tamo = [self activateTamo:type isLarge:isLarge];
+    Tamo* tamo = [self activateTamo:type isLarge:isLarge];
     if (tamo)
     {
       CGSize viewSize = [[CCDirector sharedDirector] viewSize];
@@ -152,32 +154,16 @@
 //------------------------------------------------------------------------------
 #pragma mark - Tamo
 //------------------------------------------------------------------------------
--(CCSprite *)createTamoWithImage:(CIImage *)image size:(CGSize)size
-{
-  CIImage* resizedImage = [self resizeImage:image size:size];
-  CGImageRef cgImageRef = [self convertCIImageToCGImageRef:resizedImage];
-  CCSprite* tamo = [CCSprite spriteWithCGImage:cgImageRef key:nil];
-  tamo.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0.f, 0.f, tamo.boundingBox.size.width, tamo.boundingBox.size.height) cornerRadius:0.f];
-  tamo.physicsBody.type = CCPhysicsBodyTypeDynamic;
-  return tamo;
-}
-//------------------------------------------------------------------------------
--(CCSprite *)createTamoWithSprite:(CCSprite *)sprite
-{
-  CCSprite* tamo = [CCSprite spriteWithTexture:[sprite texture]];
-  tamo.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0.f, 0.f, tamo.boundingBox.size.width, tamo.boundingBox.size.height) cornerRadius:0.f];
-  tamo.physicsBody.type = CCPhysicsBodyTypeDynamic;
-  return tamo;
-}
-//------------------------------------------------------------------------------
--(CCSprite *)activateTamo:(int)type isLarge:(BOOL)isLarge
+-(Tamo *)activateTamo:(int)type isLarge:(BOOL)isLarge
 {
   NSArray* tamoListList = isLarge ? largeTamoListList_ : smallTamoListList_;
   NSAssert(type < tamoTypeNum_, @"invalid tamo type %d.", type);
   NSArray* tamoList = tamoListList[type];
-  
-  for (CCSprite* tamo in tamoList)
+ 
+  // タモリストを走査
+  for (Tamo* tamo in tamoList)
   {
+    // 既にアクティブ
     if ([tamo parent])
     {
       continue;
@@ -188,23 +174,6 @@
   }
   
   return nil;
-}
-//------------------------------------------------------------------------------
-#pragma mark - Image
-//------------------------------------------------------------------------------
--(CIImage *)resizeImage:(CIImage *)image size:(CGSize)size
-{
-  CGFloat scaleX = size.width / image.extent.size.width;
-  CGFloat scaleY = size.height / image.extent.size.height;
-  CIImage* resizedImage = [image imageByApplyingTransform:CGAffineTransformMakeScale(scaleX, scaleY)];
-  return resizedImage;
-}
-//------------------------------------------------------------------------------
--(CGImageRef)convertCIImageToCGImageRef:(CIImage *)ciImage
-{
-  CIContext* context = [CIContext contextWithOptions:nil];
-  CGImageRef cgImageRef = [context createCGImage:ciImage fromRect:ciImage.extent];
-  return cgImageRef;
 }
 //------------------------------------------------------------------------------
 @end
