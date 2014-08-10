@@ -143,6 +143,9 @@
     // トリミング
     CIImage* trimmedImage = [ciImage imageByCroppingToRect:feature.bounds];
     
+    // トリミングした画像の向きを整える
+    trimmedImage = [trimmedImage imageByApplyingTransform:CGAffineTransformMakeRotation(-M_PI_2)];
+    
     [faceImageList addObject:trimmedImage];
   }
   
